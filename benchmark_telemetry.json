@@ -1,0 +1,369 @@
+{
+  "engine": "Sciling Neuro-Symbolic Fact-Graph & Deontic Guardrail v2.0",
+  "author": "Juan Diego Ussa Aponte",
+  "metrics": {
+    "total_cases": 24,
+    "true_positives_rejected": 13,
+    "true_negatives_approved": 11,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "mcc": 1.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.0,
+    "latency_mean_ms": 1.937,
+    "latency_p50_ms": 1.897,
+    "latency_p95_ms": 2.484,
+    "latency_p99_ms": 2.65
+  },
+  "cases": [
+    {
+      "id": "BB-01",
+      "domain": "BidBrief (Public Procurement)",
+      "category": "Exact Grounding",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 2.061,
+      "mean_semantic_similarity": 0.65,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "BB-02",
+      "domain": "BidBrief (Public Procurement)",
+      "category": "Unit Conversion Equivalence (2 meses -> 60 días, 50.000€ -> 50k€)",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 1.884,
+      "mean_semantic_similarity": 0.651,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "BB-03",
+      "domain": "BidBrief (Public Procurement)",
+      "category": "Deontic Equivalence (exentas <=> no están obligadas)",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 1.486,
+      "mean_semantic_similarity": 0.806,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "BB-04",
+      "domain": "BidBrief (Public Procurement)",
+      "category": "Inequality Bound Satisfaction (45.000€ <= 50.000€)",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 2.696,
+      "mean_semantic_similarity": 0.72,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "BB-05",
+      "domain": "BidBrief (Public Procurement)",
+      "category": "Relational Swap Attack (Lote 1 <-> Lote 2 Budgets)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 2.419,
+      "mean_semantic_similarity": 0.9,
+      "violation_types": [
+        "RELATIONAL_SWAP_HALLUCINATION"
+      ],
+      "violation_details": [
+        "RELATIONAL_SWAP_HALLUCINATION: Quantity '120.000€' bound to subject 'lote_1' (expected '50.000€'), but in context '120.000€' belongs to 'lote_2'.",
+        "RELATIONAL_SWAP_HALLUCINATION: Quantity '50.000€' bound to subject 'lote_2' (expected '120.000€'), but in context '50.000€' belongs to 'lote_1'."
+      ]
+    },
+    {
+      "id": "BB-06",
+      "domain": "BidBrief (Public Procurement)",
+      "category": "Deontic Polarity Flip (obligatorio -> exento)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 1.511,
+      "mean_semantic_similarity": 0.796,
+      "violation_types": [
+        "DEONTIC_POLARITY_INVERSION"
+      ],
+      "violation_details": [
+        "DEONTIC_POLARITY_INVERSION: Proposition polarity flipped from OBLIGATORY (POSITIVE: 'obligatorio') in context to EXEMPT (NEGATIVE: 'exento') in answer."
+      ]
+    },
+    {
+      "id": "BB-07",
+      "domain": "BidBrief (Public Procurement)",
+      "category": "Budget Threshold Violation (65.000€ > máximo 50.000€)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 1.834,
+      "mean_semantic_similarity": 0.72,
+      "violation_types": [
+        "THRESHOLD_BOUND_VIOLATION"
+      ],
+      "violation_details": [
+        "THRESHOLD_BOUND_VIOLATION: Quantity '65.000€' (65000 eur) for 'lote_1' violates context constraint '<= 50.000€' (50000 eur)."
+      ]
+    },
+    {
+      "id": "BB-08",
+      "domain": "BidBrief (Public Procurement)",
+      "category": "Inequality Operator Flip (inferior a 30 min -> superior a 30 min)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 1.915,
+      "mean_semantic_similarity": 0.939,
+      "violation_types": [
+        "THRESHOLD_BOUND_VIOLATION"
+      ],
+      "violation_details": [
+        "THRESHOLD_BOUND_VIOLATION: Operator flip for subject 'tiempo' (Answer: '> 30 minutos' vs Context: '< 30 minutos')."
+      ]
+    },
+    {
+      "id": "BC-01",
+      "domain": "PREDATICS / Bio-Clinical",
+      "category": "Exact Clinical Grounding",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 2.295,
+      "mean_semantic_similarity": 1.0,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "BC-02",
+      "domain": "PREDATICS / Bio-Clinical",
+      "category": "Unit Conversion Equivalence (500mg -> 0.5g)",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 2.496,
+      "mean_semantic_similarity": 1.0,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "BC-03",
+      "domain": "PREDATICS / Bio-Clinical",
+      "category": "Deontic Equivalence (contraindicado <=> no se permite)",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 1.841,
+      "mean_semantic_similarity": 0.881,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "BC-04",
+      "domain": "PREDATICS / Bio-Clinical",
+      "category": "Inequality Bound Satisfaction (85% > 80% geriatric risk threshold)",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 1.968,
+      "mean_semantic_similarity": 0.852,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "BC-05",
+      "domain": "PREDATICS / Bio-Clinical",
+      "category": "Relational Swap Attack (Metformina 20mg <-> Atorvastatina 500mg)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 2.373,
+      "mean_semantic_similarity": 0.942,
+      "violation_types": [
+        "RELATIONAL_SWAP_HALLUCINATION"
+      ],
+      "violation_details": [
+        "RELATIONAL_SWAP_HALLUCINATION: Quantity '20mg' bound to subject 'metformina' (expected '500mg'), but in context '20mg' belongs to 'atorvastatina'.",
+        "RELATIONAL_SWAP_HALLUCINATION: Quantity '500mg' bound to subject 'atorvastatina' (expected '20mg'), but in context '500mg' belongs to 'metformina'."
+      ]
+    },
+    {
+      "id": "BC-06",
+      "domain": "PREDATICS / Bio-Clinical",
+      "category": "Deontic Polarity Flip (contraindicado -> recomienda)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 1.589,
+      "mean_semantic_similarity": 0.853,
+      "violation_types": [
+        "DEONTIC_POLARITY_INVERSION"
+      ],
+      "violation_details": [
+        "DEONTIC_POLARITY_INVERSION: Proposition polarity flipped from FORBIDDEN (NEGATIVE: 'contraindicado') in context to PERMITTED (POSITIVE: 'recomienda') in answer."
+      ]
+    },
+    {
+      "id": "BC-07",
+      "domain": "PREDATICS / Bio-Clinical",
+      "category": "Numerical Hallucination (92.4% -> 98.5%)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 1.908,
+      "mean_semantic_similarity": 0.877,
+      "violation_types": [
+        "CRITICAL_NUMERICAL_HALLUCINATION"
+      ],
+      "violation_details": [
+        "CRITICAL_NUMERICAL_HALLUCINATION: Quantity '98.5%' (0.985 ratio) not grounded in context."
+      ]
+    },
+    {
+      "id": "BC-08",
+      "domain": "PREDATICS / Bio-Clinical",
+      "category": "Unanchored Clinical Extrapolation",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 1.539,
+      "mean_semantic_similarity": 0.0,
+      "violation_types": [
+        "UNANCHORED_SENTENCE"
+      ],
+      "violation_details": [
+        "UNANCHORED_SENTENCE: 'Los cirujanos cardiovasculares sugieren realizar una tomogra...' semantic score 0.00 < 0.30"
+      ]
+    },
+    {
+      "id": "SC-01",
+      "domain": "Sciling Core (Multi-Agent LLM)",
+      "category": "Exact Infrastructure Grounding",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 1.947,
+      "mean_semantic_similarity": 0.874,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "SC-02",
+      "domain": "Sciling Core (Multi-Agent LLM)",
+      "category": "Unit Conversion Equivalence (1.5 segundos -> 1500ms)",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 2.171,
+      "mean_semantic_similarity": 0.818,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "SC-03",
+      "domain": "Sciling Core (Multi-Agent LLM)",
+      "category": "Deontic Equivalence (prohíbe <=> no permite) + Discourse Marker",
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "passed": true,
+      "latency_ms": 1.632,
+      "mean_semantic_similarity": 0.936,
+      "violation_types": [],
+      "violation_details": []
+    },
+    {
+      "id": "SC-04",
+      "domain": "Sciling Core (Multi-Agent LLM)",
+      "category": "Relational Swap Attack (vLLM 92ms <-> TGI 14ms)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 2.316,
+      "mean_semantic_similarity": 0.779,
+      "violation_types": [
+        "RELATIONAL_SWAP_HALLUCINATION"
+      ],
+      "violation_details": [
+        "RELATIONAL_SWAP_HALLUCINATION: Quantity '92ms' bound to subject 'vllm' (expected '14ms'), but in context '92ms' belongs to 'tgi'.",
+        "RELATIONAL_SWAP_HALLUCINATION: Quantity '14ms' bound to subject 'tgi' (expected '92ms'), but in context '14ms' belongs to 'vllm'."
+      ]
+    },
+    {
+      "id": "SC-05",
+      "domain": "Sciling Core (Multi-Agent LLM)",
+      "category": "Deontic Polarity Flip (prohíbe -> permite plaintext tokens)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 1.713,
+      "mean_semantic_similarity": 0.909,
+      "violation_types": [
+        "DEONTIC_POLARITY_INVERSION"
+      ],
+      "violation_details": [
+        "DEONTIC_POLARITY_INVERSION: Proposition polarity flipped from FORBIDDEN (NEGATIVE: 'prohíbe') in context to PERMITTED (POSITIVE: 'permite') in answer."
+      ]
+    },
+    {
+      "id": "SC-06",
+      "domain": "Sciling Core (Multi-Agent LLM)",
+      "category": "Numerical Hallucination (14ms -> 45ms)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 1.887,
+      "mean_semantic_similarity": 0.759,
+      "violation_types": [
+        "CRITICAL_NUMERICAL_HALLUCINATION"
+      ],
+      "violation_details": [
+        "CRITICAL_NUMERICAL_HALLUCINATION: Quantity '45ms' (0.045 s) not grounded in context."
+      ]
+    },
+    {
+      "id": "SC-07",
+      "domain": "Sciling Core (Multi-Agent LLM)",
+      "category": "Entity Fabrication (Google TPUv4 & OpenAI Whisper)",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 1.552,
+      "mean_semantic_similarity": 0.389,
+      "violation_types": [
+        "ENTITY_FABRICATION"
+      ],
+      "violation_details": [
+        "ENTITY_FABRICATION: Entities {'tpuv4', 'openai', 'whisper', 'google'} absent from source documents."
+      ]
+    },
+    {
+      "id": "SC-08",
+      "domain": "Sciling Core (Multi-Agent LLM)",
+      "category": "Unanchored Infrastructure Speculation",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "passed": true,
+      "latency_ms": 1.451,
+      "mean_semantic_similarity": 0.0,
+      "violation_types": [
+        "ENTITY_FABRICATION",
+        "UNANCHORED_SENTENCE"
+      ],
+      "violation_details": [
+        "ENTITY_FABRICATION: Entities {'kubernetes'} absent from source documents.",
+        "UNANCHORED_SENTENCE: 'Los administradores de sistemas recomiendan migrar toda la i...' semantic score 0.00 < 0.30"
+      ]
+    }
+  ]
+}

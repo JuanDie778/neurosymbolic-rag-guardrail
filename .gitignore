@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches & Environments
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Local database instances & temporary logs
+*.db
+*.sqlite
+*.sqlite3
+*.log
+telemetry_latest.json
+perishable_inventory.db
+inventory_flow.db
+flywire_ledger.db
+gate_sync_journal.db
+
+# OS Artifacts
+.DS_Store
+Thumbs.db
